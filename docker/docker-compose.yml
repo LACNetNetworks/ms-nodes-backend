@@ -1,0 +1,21 @@
+
+version: '3.6' 
+services: 
+  mongo:
+        container_name: mongo
+        image: mongo:4.2.8
+        restart: always
+        hostname: mongo
+        environment:
+          TZ: UTC # UTC, Europe/Amsterdam, America/Lima
+          MONGO_INITDB_DATABASE: lacnetdb
+          MONGO_INITDB_ROOT_USERNAME: admin
+          MONGO_INITDB_ROOT_PASSWORD: password
+        ports:
+        - 27017:27017
+        volumes:
+        - datanodes:/data/db
+volumes:
+  datanodes:
+    external: true
+
