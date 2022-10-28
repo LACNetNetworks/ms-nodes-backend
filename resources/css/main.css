@@ -1,0 +1,16 @@
+html { font-family:Calibri, Arial, Helvetica, sans-serif; font-size:11pt; background-color:white }
+a.comment-indicator:hover + div.comment { background:#ffd; position:absolute; display:block; border:1px solid black; padding:0.5em }
+a.comment-indicator { background:red; display:inline-block; border:1px solid black; width:0.5em; height:0.5em }
+div.comment { display:none }
+body{font-family: -apple-system; font-size: 14.4px;}
+table {border:1px solid hsla(0,0%,50.2%,.501960784313725); border-collapse:collapse; page-break-after:always }
+
+
+table td { border:1px solid hsla(0,0%,50.2%,.501960784313725); padding: 15px; }
+table th { border:1px solid #80808080 ;padding: 15px;}
+
+
+table tr:nth-child(even){background-color:white;}
+
+table tr:hover {color:white; background-color: #406dff}
+table tr {background-color: #80808012}

@@ -1,7 +1,7 @@
 const spanError = document.getElementById('error')
 
 async function loadList() {
-    const API_URL_NODES_LIST = 'http://localhost:5002/nodes/';
+    const API_URL_NODES_LIST = 'https://api.backoffice.lac-net.net/nodes/';
    
     var optionUrl = {  
         method: 'GET',
@@ -23,7 +23,7 @@ async function loadList() {
       
       } else if (res.status == 200 ){
         const data = await res.json();
-        console.log(data)
+        
         console.log(res.status)
 
         let row = table.insertRow(0);
@@ -37,18 +37,26 @@ async function loadList() {
         let cell8 = row.insertCell(7);
     
         cell1.innerHTML = "count"
+        
         cell2.innerHTML = "Entity"
+       
         cell3.innerHTML = "Network ID"
+       
         cell4.innerHTML = "Network Name"
+        
         cell5.innerHTML = "Type"
+     
         cell6.innerHTML = "Technical Contact"
+        
         cell7.innerHTML = "Business contact"
+       
         cell8.innerHTML = "Node ID"
+        
 
         let j =1
 
         data.forEach(node => {
-          console.log(node)
+        
          
            
   

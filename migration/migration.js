@@ -3,12 +3,12 @@ const mongoose = require('mongoose')
 const Nodes = require('../models/Nodes')
 const fs = require("fs");
 const { parse } = require("csv-parse");
+require("dotenv").config();
+
+const MONGODB_URI=process.env.MONGODB_URI 
 
 
-const MONGODB_URI=process.env.MONGODB_URI || "mongodb://admin:password@localhost:27017/lacnetdb?authSource=admin"
-
-
-console.log(`URI_MONGO ${MONGODB_URI}`)
+console.log(`MONGODB_URI ${MONGODB_URI}`)
 //DB connection
 mongoose.connect(MONGODB_URI,{
    // useCreateIndex: true,
@@ -33,7 +33,7 @@ fs.createReadStream("../resources/lacchain-nodes.csv")
     BussinesContact: row[6],
     enode: row[0]
     }
-    console.log(node);
+    //console.log(node);
     Nodes.create(node, (err, data)=>{
       if(err){
           console.log(err)

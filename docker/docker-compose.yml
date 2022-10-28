@@ -2,19 +2,34 @@
 version: '3.6' 
 services: 
   mongo:
-        container_name: mongo
-        image: mongo:4.2.8
-        restart: always
-        hostname: mongo
-        environment:
-          TZ: UTC # UTC, Europe/Amsterdam, America/Lima
-          MONGO_INITDB_DATABASE: lacnetdb
-          MONGO_INITDB_ROOT_USERNAME: admin
-          MONGO_INITDB_ROOT_PASSWORD: password
-        ports:
-        - 27017:27017
-        volumes:
-        - datanodes:/data/db
+      container_name: ms-mongo-service-svc
+      image: mongo:4.2.8
+      restart: always
+      hostname: mongo
+      environment:
+        TZ: UTC # UTC, Europe/Amsterdam, America/Lima
+        MONGO_INITDB_DATABASE: lacnetdb
+        MONGO_INITDB_ROOT_USERNAME: $MONGO_USERNAME
+        MONGO_INITDB_ROOT_PASSWORD: $MONGO_PASSWORD
+      ports:
+      - 27017:27017
+      volumes:
+      - datanodes:/data/db
+  web:
+      image: gcr.io/lacchain-bid/ms-nodes-backend:1.0.1
+      restart: unless-stopped
+      environment:
+        SEVER_PORT: 5000
+        DB_USER: $MONGO_USERNAME
+        DB_PASSWORD: $MONGO_PASSWORD
+        DB_HOST: ms-mongo-service-svc
+        DB_PORT: 27017
+        DB_NAME: lacnetdb
+      depends_on:
+      - mongo
+      ports:
+      - 80:5000
+
 volumes:
   datanodes:
     external: true

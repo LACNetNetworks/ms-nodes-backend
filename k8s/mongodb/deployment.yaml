@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongo-service
+  namespace: backoffice-nodes
+  labels:
+    app-code: mongo-service
+    app-role: server
+    app-plattform: backoffice-nodes
+spec:
+  serviceName: mongo-service
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app-code: mongo-service
+  template:
+    metadata:
+      labels:
+        app-code: mongo-service
+    spec:
+      containers:
+      - name: mysql-service
+        image:   mongo:4.2.8
+        imagePullPolicy: Always
+        resources:
+            requests:
+              memory: "128Mi"
+              cpu: "50m"
+            limits:
+              memory: "256Mi"
+              cpu: "150m"
+        env:
+          - name: MONGO_INITDB_DATABASE
+            value: lacnetdb
+          - name: MONGO_INITDB_ROOT_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: mongo-user-pass
+                key: username
+          - name: MONGO_INITDB_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mongo-user-pass
+                key: password
+        volumeMounts:
+         - mountPath: /data/db
+           name: mongodata
+        ports:
+        - containerPort: 27017
+          name: http
+          protocol: TCP
+        livenessProbe:
+          tcpSocket:
+            port: 27017
+          initialDelaySeconds: 60
+          periodSeconds: 180
+          timeoutSeconds: 3
+          failureThreshold: 3
+      volumes:
+       - name: mongodata
+         persistentVolumeClaim:
+          claimName: mongodb-pvc
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ms-mongo-service-svc
+  namespace: backoffice-nodes
+  labels:
+    svc-code: mongo-service-svc
+spec:
+  type: ClusterIP
+  selector:
+    app-code: mongo-service
+  ports:
+  - protocol: TCP
+    port: 27017
+    targetPort: 27017
+    name: http
