@@ -36,6 +36,7 @@ fs.createReadStream("../resources/lacchain-nodes.csv")
     //console.log(node);
     Nodes.create(node, (err, data)=>{
       if(err){
+        console.log(node)
           console.log(err)
       }
     })

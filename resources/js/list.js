@@ -36,7 +36,7 @@ async function loadList() {
         let cell7 = row.insertCell(6);
         let cell8 = row.insertCell(7);
     
-        cell1.innerHTML = "count"
+        cell1.innerHTML = "Count"
         
         cell2.innerHTML = "Entity"
        

@@ -6,6 +6,9 @@ create volumen
 
     $ docker  volume create datanodes
 
+## Kubernetes
+https://api.backoffice.lac-net.net/list-nodes
+
 ### secret
 
 echo -n 'xxxx' > ./username

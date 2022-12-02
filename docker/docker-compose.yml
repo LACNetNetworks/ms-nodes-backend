@@ -29,7 +29,6 @@ services:
       - mongo
       ports:
       - 80:5000
-
 volumes:
   datanodes:
     external: true
