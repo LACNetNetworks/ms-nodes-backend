@@ -17,7 +17,7 @@ exports.findAll=(req,res)=>{
         }else{
             res.status(200).send(data)
         }
-    })
+    }).sort({entity: 'asc'})
 }
 exports.findAllSort=(req,res)=>{
     Nodes.find((err,data)=>{

@@ -17,5 +17,5 @@ COPY . .
 
 EXPOSE 5000
 CMD [ "node", "server.js" ]
-# docker build -t gcr.io/lacchain-bid/ms-nodes-backend:1.0.5 -f ./docker/Dockerfile .
-# docker build -t edumar111/ms-nodes-backend:1.0.5 -f ./docker/Dockerfile .
+# docker build -t gcr.io/lacchain-bid/ms-nodes-backend:1.0.6 -f ./docker/Dockerfile .
+# docker build -t edumar111/ms-nodes-backend:1.0.6 -f ./docker/Dockerfile .
