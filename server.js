@@ -3,6 +3,7 @@ const express = require('express')
 const https = require('https');
 const mongoose = require('mongoose')
 const nodesRouter = require('./routes/nodes.routes')
+const marketRequestRouter = require('./routes/marketrequest.routes')
 const dbConfig = require("./config/db.config.js");
 const  path  = require("path");
 const fs = require('fs');
@@ -54,6 +55,7 @@ app.get("/health",(req,res)=>{
 })
 
 app.use('/nodes', nodesRouter)
+app.use('/market', marketRequestRouter)
 //Start Server
 //app.listen(PORT,()=> console.log(`Server is running on port ${PORT}`))
 
