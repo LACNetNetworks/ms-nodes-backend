@@ -25,15 +25,24 @@ fs.createReadStream("../resources/lacchain-nodes.csv")
    
 
     let node = {
-      entity: row[1],
-    networkId: row[2],
-    networkName: row[3],
-    type: row[4],
-    technicalContact: row[5],
-    BussinesContact: row[6],
-    enode: row[0]
+      enode: row[0],
+      ipAddress: row[1],
+      coinbase: row[2],
+      portp2p: row[3],
+      status: row[4],
+      nodeName: row[5],
+      entity: row[6],
+      networkId: row[7],
+      networkName: row[8],
+      type: row[9],
+      nameTechnicalContact: row[10],
+      emailTechnicalContact: row[11],
+      phoneTechnicalContact: row[12],
+      nameBussinesContact: row[13],
+      emailBussinesContact: row[14],
+      phoneBussinesContact: row[15]
     }
-    //console.log(node);
+    console.log(node);
     Nodes.create(node, (err, data)=>{
       if(err){
         console.log(node)

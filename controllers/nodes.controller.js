@@ -19,6 +19,16 @@ exports.findAll=(req,res)=>{
         }
     }).sort({entity: 'asc'})
 }
+exports.findAllPortal=(req,res)=>{
+    Nodes.find((err,data)=>{
+        if(err){
+            res.status(500).send(err)
+        }else{
+            res.status(200).send(data)
+        }
+    }).sort({entity: 'asc'})
+    .select({"_id": 0, "entity": 1, "networkId": 1, "networkName": 1,  "type": 1,  "nameTechnicalContact": 1, "nameBussinesContact": 1, "enode": 1 })
+}
 exports.findAllSort=(req,res)=>{
     Nodes.find((err,data)=>{
         if(err){

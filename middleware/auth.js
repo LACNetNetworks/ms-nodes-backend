@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const fs = require('fs');
 var  cert = fs.readFileSync('/security/rsa-public.pem');  // get public key
-
+//var  cert = fs.readFileSync('/Users/edumar111/lacchain/workspace/ms-nodes-backend/security/rsa-public.pem');  // get public key
 
 const verifyToken = (req, res, next) => {
   const token =

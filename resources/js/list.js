@@ -1,8 +1,8 @@
 const spanError = document.getElementById('error')
 
 async function loadList() {
-    const API_URL_NODES_LIST = 'https://api.backoffice.lac-net.net/nodes/';
-   
+    const API_URL_NODES_LIST = 'https://api.backoffice.lac-net.net/nodes/portal';
+   // const API_URL_NODES_LIST = 'http://localhost:5000/nodes/portal';
     var optionUrl = {  
         method: 'GET',
         headers: {
@@ -77,8 +77,8 @@ async function loadList() {
             cell3.innerHTML = node.networkId;
             cell4.innerHTML = node.networkName;
             cell5.innerHTML = node.type;
-            cell6.innerHTML = node.technicalContact;
-            cell7.innerHTML = node.BussinesContact;
+            cell6.innerHTML = node.nameTechnicalContact;
+            cell7.innerHTML = node.nameBussinesContact;
             cell8.innerHTML = node.enode;
 
           j ++

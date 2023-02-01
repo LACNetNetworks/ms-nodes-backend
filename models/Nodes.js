@@ -1,6 +1,28 @@
 const mongoose = require('mongoose')
 
 const nodesSchema = mongoose.Schema({
+    enode:{
+        type: String,
+        required: true
+    },
+    ipAddress:{
+        type: String,
+        required: true
+    },
+    coinbase:{
+        type: String,
+        required: true
+    },
+    portp2p:{
+        type: String,
+        required: true
+    },status:{
+        type: String,
+        required: true
+    },nodeName:{
+        type: String,
+        required: false
+    },
     entity: {
         type: String,
         required: true
@@ -14,15 +36,24 @@ const nodesSchema = mongoose.Schema({
     },type:{
         type: String,
         required: true
-    },technicalContact:{
-        type: String,
-        required: true
-    },BussinesContact:{
+    },nameTechnicalContact:{
         type: String,
         required: false
-    },enode:{
+    },emailTechnicalContact:{
         type: String,
-        required: true
+        required: false
+    },phoneTechnicalContact:{
+        type: String,
+        required: false
+    },nameBussinesContact:{
+        type: String,
+        required: false
+    },emailBussinesContact:{
+        type: String,
+        required: false
+    },phoneBussinesContact:{
+        type: String,
+        required: false
     },
     date:{
         type: Date,
