@@ -17,6 +17,8 @@ echo -n 'xxx' > ./password
 
 kubectl create secret generic mongo-user-pass --from-file=./username --from-file=./password -n backoffice-nodes
 
+kubectl create secret generic mail-user-pass --from-file=./username --from-file=./password -n backoffice-nodes
+
 kubectl get secret mongo-user-pass
 
 kubectl describe secret mongo-user-pass -n backoffice-nodes

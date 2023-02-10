@@ -18,5 +18,5 @@ ADD security /security
 
 EXPOSE 5000
 CMD [ "node", "server.js" ]
-# docker build -t gcr.io/lacchain-bid/ms-nodes-backend:1.0.14 -f ./docker/Dockerfile .
+# docker build -t gcr.io/lacchain-bid/ms-nodes-backend:1.0.15 -f ./docker/Dockerfile .
 # docker build -t edumar111/ms-nodes-backend:1.0.8 -f ./docker/Dockerfile .

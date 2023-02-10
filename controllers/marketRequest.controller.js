@@ -1,11 +1,40 @@
 const MarketRequest = require('../models/MarketRequest')
+var nodemailer = require('nodemailer');
 
 exports.create=(req,res) =>{
     const node = req.body
+    console.log(" create node market")
+    var transporter = nodemailer.createTransport({
+        host: 'smtp.office365.com',
+        port: 587,
+        auth: {
+            user: process.env.MAIL_USER ,
+            pass: process.env.MAIL_PASSWORD
+        }
+    })
+
+   var  message = {
+        from: "testmarket@lac-net.net",
+        to: "tech.support@lac-net.net",
+        subject: "TEST - Add node on MarketPlace  " + node.market ,
+        text: "TEST - Add Node with enode: " + node.enode + " and Address:" + node.address
+         + " on market "+  node.market + ". \n \n Tech Support - LacNet " 
+    }
     MarketRequest.create(node, (err, data)=>{
-        if(err){
+        console.log(" create node market db")
+
+        if(err){ 
             res.status(500).send(err)
         }else{
+            transporter.sendMail(message, function(err, info) {
+                if (err) {
+                  console.log(err)
+                } else {
+                  console.log(info);
+                }
+            }
+            )
+
             res.status(201).send(data)
         }
     })
