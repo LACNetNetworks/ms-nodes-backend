@@ -16,7 +16,20 @@ const MarketRequestSchema = mongoose.Schema({
     date:{
         type: Date,
         default: Date.now()
+    },
+    network:{
+        type: String,
+        required: false
+    },
+    status:{
+        type: String,
+        required: false
+    },
+    membership:{
+        type: String,
+        required: false
     }
+    
 })
 
 module.exports = mongoose.model(`MarketRequest`,MarketRequestSchema)

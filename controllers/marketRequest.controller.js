@@ -15,9 +15,9 @@ exports.create=(req,res) =>{
 
    var  message = {
         from: "testmarket@lac-net.net",
-        to: "tech.support@lac-net.net",
-        subject: "TEST - Add node on MarketPlace  " + node.market ,
-        text: "TEST - Add Node with enode: " + node.enode + " and Address:" + node.address
+        to: "tech.support@lac-net.net, comercial@lac-net.net",
+        subject: "Add node on MarketPlace  " + node.market ,
+        text: "Add Node with enode: " + node.enode + " and Address:" + node.address
          + " on market "+  node.market + ". \n \n Tech Support - LacNet " 
     }
     MarketRequest.create(node, (err, data)=>{
