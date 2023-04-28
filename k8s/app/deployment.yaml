@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
         - name: ms-nodes-backend
-          image: gcr.io/lacchain-bid/ms-nodes-backend:1.0.18
+          image: gcr.io/lacchain-bid/ms-nodes-backend:1.0.20
           imagePullPolicy: Always
           resources:
             requests:
