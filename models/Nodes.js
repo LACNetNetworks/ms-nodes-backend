@@ -25,17 +25,17 @@ const nodesSchema = mongoose.Schema({
     },
     entity: {
         type: String,
-        required: true
+        required: false
     },
     networkId:{
         type: String,
-        required: true
+        required: false
     },networkName:{
         type: String,
-        required: true
+        required: false
     },type:{
         type: String,
-        required: true
+        required: false
     },nameTechnicalContact:{
         type: String,
         required: false

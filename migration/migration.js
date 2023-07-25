@@ -29,7 +29,7 @@ fs.createReadStream("../resources/lacchain-nodes.csv")
       ipAddress: row[1],
       coinbase: row[2],
       portp2p: row[3],
-      status: row[4],
+      status: "ACTIVE",
       nodeName: row[5],
       entity: row[6],
       networkId: row[7],
